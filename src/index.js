@@ -51,7 +51,7 @@ export default class Carousel extends React.Component {
     this.touchObject = {};
     this.state = {
       currentSlide: this.props.slideIndex,
-      dragging: false,
+      dragging: true,
       frameWidth: 0,
       left: 0,
       slideCount: 0,
@@ -365,9 +365,9 @@ export default class Carousel extends React.Component {
 
     this.touchObject = {};
 
-    this.setState({
-      dragging: false
-    });
+    // this.setState({
+    //   dragging: false
+    // });
   }
 
   swipeDirection(x1, x2, y1, y2) {
@@ -809,7 +809,7 @@ export default class Carousel extends React.Component {
     return {
       position: 'relative',
       display: 'block',
-      overflow: this.props.frameOverflow,
+      overflow: window.innerWidth < 768 ? 'visible' : null,
       height: this.props.vertical ? this.state.frameWidth || 'initial' : 'auto',
       padding: this.props.framePadding,
       transform: 'translate3d(0, 0, 0)',
