@@ -809,7 +809,7 @@ export default class Carousel extends React.Component {
     return {
       position: 'relative',
       display: 'block',
-      overflow: window.innerWidth < 768 ? 'visible' : null,
+      overflow: this.props.frameOverflow,
       height: this.props.vertical ? this.state.frameWidth || 'initial' : 'auto',
       padding: this.props.framePadding,
       transform: 'translate3d(0, 0, 0)',
