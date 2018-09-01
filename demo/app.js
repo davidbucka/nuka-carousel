@@ -14,6 +14,7 @@ class App extends React.Component {
     return (
       <div style={{ width: '50%', margin: 'auto' }}>
         <Carousel
+          withoutControls
           wrapAround={this.state.wrapAround}
           slideIndex={this.state.slideIndex}
           afterSlide={slideIndex => this.setState({ slideIndex })}

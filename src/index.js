@@ -849,10 +849,7 @@ export default class Carousel extends React.Component {
     const end =
       (this.state.slideWidth + this.props.cellSpacing) * slidesToShow * -1;
 
-    if (
-      this.props.wrapAround &&
-      (this.state.isWrappingAround)
-    ) {
+    if (this.props.wrapAround && this.state.isWrappingAround) {
       const slidesBefore = Math.ceil(positionValue / this.state.slideWidth);
       if (this.state.slideCount - slidesBefore <= index) {
         return (
@@ -1008,6 +1005,10 @@ export default class Carousel extends React.Component {
   }
 
   renderControls() {
+    const { withoutControls } = this.props;
+    if (withoutControls) {
+      return;
+    }
     return this.controlsMap.map(
       ({ func, key }) =>
         func &&
@@ -1103,6 +1104,7 @@ Carousel.propTypes = {
   frameOverflow: PropTypes.string,
   framePadding: PropTypes.string,
   heightMode: PropTypes.oneOf(['first', 'current', 'max']),
+  withoutControls: PropTypes.bool,
   initialSlideHeight: PropTypes.number,
   initialSlideWidth: PropTypes.number,
   onResize: PropTypes.func,
@@ -1142,6 +1144,7 @@ Carousel.defaultProps = {
   framePadding: '0px',
   frameOverflow: 'hidden',
   heightMode: 'first',
+  withoutControls: false,
   onResize() {},
   slideIndex: 0,
   slidesToScroll: 1,
